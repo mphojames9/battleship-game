@@ -1,6 +1,12 @@
 const gamesBoardContainer = document.querySelector("#gamesboard-container");
 const optionContainer = document.querySelector(".option-container");
 const flipButton = document.querySelector("#flip-button");
+let music = new Audio("/sounds/music.mp3");
+let backgroundSound = new Audio("/sounds/background_sound.mp3");
+let fire_shoot = new Audio("/sounds/fire_shot.mp3");
+let shot_hit = new Audio("/sounds/shot_hit.mp3");
+let shot_miss = new Audio("/sounds/shot_miss.mp3");
+
 
 //input section animation and style
 const introElement = document.querySelector(".input-container");
@@ -165,14 +171,14 @@ let playerTurn
 
 function startGame() {
         if (optionContainer.children.length != 0){
-            infoDisplay.textContent = "Please place all your pieces first"
+            return
         } else {
             allBoardBlocks = document.querySelectorAll("#computer div")
             allBoardBlocks.forEach(block => block.addEventListener("click", handleClick))
             fadeAnimation()
         }
         playerTurn = true
-        turnDisplay.textContent = "Your Go!"
+        turnDisplay.textContent = "Your Turn!"
         infoDisplay.textContent = "The game has Started"
     }
 
@@ -196,7 +202,7 @@ function handleClick(e) {
             checkScore("player", playerHits, playerSunkShips)
         }
         if (!e.target.classList.contains("taken")) {
-            infoDisplay.textContent = "Nothing hit this time"
+            infoDisplay.textContent = "You Missed"
             e.target.classList.add("empty")
         }
         playerTurn = false;
@@ -208,8 +214,8 @@ function handleClick(e) {
 
 function computerGo(){
     if (!gameOver) {
-        turnDisplay.textContent = "Computer Go";
-        infoDisplay.textContent = "The computer is thinking..."
+        turnDisplay.textContent = "Computer's Turn";
+        infoDisplay.textContent = "The Computer Is Arming..."
     }
 
     setTimeout(() => {
@@ -226,7 +232,7 @@ function computerGo(){
             !allBoardBlocks[randomGo].classList.contains("boom")
         ) {
             allBoardBlocks[randomGo].classList.add("boom")
-            infoDisplay.textContent = "The computer hits your ship"
+            infoDisplay.textContent = "The Computer Hits Your Ship"
             let classes = Array.from(allBoardBlocks[randomGo].classList)
             classes = classes.filter(className => className !== "block")
             classes = classes.filter(className => className !== "boom")
@@ -234,18 +240,18 @@ function computerGo(){
             compuetrHits.push(...classes)
             checkScore("computer", compuetrHits, computerSunkShips)
         } else {
-            infoDisplay.textContent = "Nothing hits this time"
+            infoDisplay.textContent = "Cuputer Missed"
             allBoardBlocks[randomGo].classList.add("empty")
         }
-    }, 1000)
+    }, 2000)
 
     setTimeout(() => {
         playerTurn = true
-        turnDisplay.textContent = "your go!"
-        infoDisplay.textContent = "please take you go"
+        turnDisplay.textContent = "Your Turn!"
+        infoDisplay.textContent = "Shoot!!!"
         const allBoardBlocks = document.querySelectorAll("#computer div")
         allBoardBlocks.forEach(block => block.addEventListener("click", handleClick))
-    }, 1000);
+    }, 2000);
 }
 
 function checkScore(user, userHits, userSunkShips) {
@@ -256,12 +262,12 @@ function checkScore(user, userHits, userSunkShips) {
         )   {
 
             if(user === "player") {
-                infoDisplay.textContent = `you sunk the computer's ${shipName}`
+                infoDisplay.textContent = `You sunk the computer's ${shipName}`
                 playerHits = userHits.filter(storedShipName => storedShipName !== shipName)
             }
 
             if(user === "computer") {
-                infoDisplay.textContent = `computer sunk your ${shipName}`
+                infoDisplay.textContent = `Computer sunk your ${shipName}`
                 compuetrHits = userHits.filter(storedShipName => storedShipName !== shipName)
             }
             userSunkShips.push(shipName)
@@ -288,6 +294,7 @@ function checkScore(user, userHits, userSunkShips) {
 function fadeAnimation(){
     setTimeout(()=>{
         gameContainer.classList.add("fade")
+        music.play()
     },100)
 
     setTimeout(()=>{

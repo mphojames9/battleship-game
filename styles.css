@@ -232,7 +232,6 @@ body {
     margin: 30px auto;
     align-items: center;
     justify-content: space-between;
-    border-radius: 10px;
     
 }
 
@@ -296,11 +295,6 @@ body {
     border-radius: 100%;
     transform: scale(.5);
 }
-
-#computer .destroyer {
-    background-color: transparent;
-}
-
 
 .destroyer-preview {
     width: 20px;
