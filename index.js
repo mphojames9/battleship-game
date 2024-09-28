@@ -42,8 +42,8 @@ function createBoard(color, user) {
     }
     gamesBoardContainer.append(gameBoardContainer)
 }
-createBoard("yellow","player")
-createBoard("pink","computer")
+createBoard("rgba(0, 0, 0, 0.850)","player")
+createBoard("rgba(0, 0, 0, 0.850","computer")
 
 //Creationg ships
 class Ship {

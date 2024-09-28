@@ -49,7 +49,7 @@
 
 
 body {
-    /* background-image: url("/1012203.jpg"); */
+    background-image: url("/1012203.jpg");
     background-attachment: fixed;
     background-size: cover;
     background-position: center;
@@ -66,7 +66,9 @@ body {
     align-items: center;
     height: 100%;
     position: fixed;
+    margin-top: -2em;
     color: white;
+    display: none;
     background: linear-gradient(90deg, rgb(2, 0, 36) 0%, rgb(0, 0, 61) 29%, rgb(0, 0, 64) 76%, rgb(1, 0, 37) 100%);
 }
 
@@ -137,7 +139,7 @@ body {
 
 
 .footer {
-    background-color: black;
+    background-color: rgb(0, 0, 0);
     width: 100%;
     height: 5vh;
     display: flex;
@@ -165,9 +167,14 @@ body {
 .game-info {
     max-width: 400px;
     width: 95%;
+    color: white;
+    font-weight: 600;
     text-align: center;
-    background-color: red;
-    margin: 0 auto;
+    background-color: rgba(0, 0, 0, 0.795);
+    margin: 2em auto;
+    padding: 1em;
+    border-radius: 10px;
+    height: 10vh;
 }
 
 
@@ -194,12 +201,14 @@ body {
 }
 
 #computer {
-    display: none;
+    display: flex;
 }
 
 .block {
     width: 40px;
     height: 40px;
+    border: solid 1px rgba(26, 25, 25, 0.178);
+    cursor:crosshair;
 }
 
 .taken {
@@ -218,48 +227,80 @@ body {
     max-width: 400px;
     width: 95%;
     height: 100px;
-    background-color: yellow;
+    background-color: rgba(0, 0, 0, 0.850);
     display: flex;
     margin: 30px auto;
     align-items: center;
     justify-content: space-between;
+    border-radius: 10px;
     
 }
 
-.button {
+.buttons {
     width: 200px;
     margin: 0 auto;
+    display: flex;
+}
+
+.buttons button {
+    width: 150px;
+    height: 35px;
+    padding: 5px;
+    margin: 10px;
+    font-weight: 600;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    transition: 300ms;
+    cursor: pointer;
+    background: linear-gradient(90deg, rgb(2, 0, 36) 0%, rgb(0, 0, 61) 29%, rgb(0, 0, 64) 76%, rgb(1, 0, 37) 100%);
+}
+
+.buttons button:hover {
+    transform: scale(1.05);
+}
+
+.buttons button:active {
+    transform: scale(0.95);
 }
 
 .destroyer{
-    background-color: brown;
+    background-color: rgb(248, 246, 242);
+    cursor: grab;
 }
 
+
 .submarine {
-    background-color: green;
+    background-color: rgb(243, 237, 237);
+    cursor: grab;
 }
 
 .cruiser {
-    background-color: purple;
+    background-color: rgb(206, 167, 206);
+    cursor: grab;
 }
 
 .battleship {
-    background-color: orange;
+    background-color:rgb(218, 195, 195);
+    cursor: grab;
 }
 
 .carrier {
-    background-color: blue;
+    background-color: rgb(163, 145, 145);
+    cursor: grab;
 }
 
 .boom {
     background-color: red;
+    border-radius: 100%;
+    transform: scale(.5);
 }
 
 
 .destroyer-preview {
     width: 20px;
     height: 20px;
-    margin: 3px;
+    margin: 3px; 
 } 
 
 .submarine-preview {
