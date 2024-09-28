@@ -212,7 +212,7 @@ body {
 }
 
 .taken {
-    border-color: brown;
+    border-color: none;
 }
 
 .fade {
@@ -266,34 +266,39 @@ body {
 
 .destroyer{
     background-color: rgb(248, 246, 242);
-    cursor: grab;
 }
 
 
 .submarine {
     background-color: rgb(243, 237, 237);
-    cursor: grab;
 }
 
 .cruiser {
     background-color: rgb(206, 167, 206);
-    cursor: grab;
 }
 
 .battleship {
     background-color:rgb(218, 195, 195);
-    cursor: grab;
 }
 
 .carrier {
     background-color: rgb(163, 145, 145);
-    cursor: grab;
 }
 
 .boom {
     background-color: red;
     border-radius: 100%;
     transform: scale(.5);
+}
+
+.empty {
+    background-color: gray;
+    border-radius: 100%;
+    transform: scale(.5);
+}
+
+#computer .destroyer {
+    background-color: transparent;
 }
 
 

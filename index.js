@@ -157,6 +157,7 @@ const infoDisplay = document.querySelector("#info");
 const turnDisplay = document.querySelector("#turn-display");
 const computerBlocks = document.querySelector("#computer");
 const gameContainer = document.querySelector(".game-container")
+const shipHolder = document.querySelector(".option-container");
 
 let gameOver = false;
 let playerTurn
@@ -293,5 +294,6 @@ function fadeAnimation(){
         gameContainer.classList.add("fadeIn")
         computerBlocks.style.display = "flex";
         flipButton.style.display = "none";
+        shipHolder.style.display = "none";
     },2000)
 }
