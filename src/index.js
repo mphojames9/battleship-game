@@ -1,11 +1,11 @@
 const gamesBoardContainer = document.querySelector("#gamesboard-container");
 const optionContainer = document.querySelector(".option-container");
 const flipButton = document.querySelector("#flip-button");
-let music = new Audio("/sounds/music.mp3");
-let backgroundSound = new Audio("/sounds/background_sound.mp3");
-let fire_shoot = new Audio("/sounds/fire_shot.mp3");
-let shot_hit = new Audio("/sounds/shot_hit.mp3");
-let shot_miss = new Audio("/sounds/shot_miss.mp3");
+let music = new Audio("../src/images/sounds/music.mp3");
+let backgroundSound = new Audio("../src/images/sounds/background_sound.mp3");
+let fire_shoot = new Audio("../src/images/sounds/fire_shot.mp3");
+let shot_hit = new Audio("../src/images/sounds/shot_hit.mp3");
+let shot_miss = new Audio("../src/images/sounds/shot_miss.mp3");
 const inputField =  document.querySelector(".inputName");
 
 
