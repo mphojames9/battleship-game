@@ -4,8 +4,11 @@ const flipButton = document.querySelector("#flip-button");
 let music = new Audio("../src/images/sounds/music.mp3");
 let backgroundSound = new Audio("../src/images/sounds/background_sound.mp3");
 let fire_shoot = new Audio("../src/images/sounds/fire_shot.mp3");
+let player_fire_shoot = new Audio("../src/images/sounds/fire_shot.mp3");
 let shot_hit = new Audio("../src/images/sounds/shot_hit.mp3");
 let shot_miss = new Audio("../src/images/sounds/shot_miss.mp3");
+let player_shot_hit = new Audio("../src/images/sounds/shot_hit.mp3");
+let player_shot_miss = new Audio("../src/images/sounds/shot_miss.mp3");
 const inputField =  document.querySelector(".inputName");
 
 
@@ -30,6 +33,7 @@ submitBtn.addEventListener("click",(e)=>{
 
     setTimeout(()=>{
         introElement.style.display = "none";
+        music.play();
     },3000)
 });
 
@@ -203,21 +207,26 @@ const computerSunkShips = []
 
 function handleClick(e) {
     if (!gameOver) {
+        player_fire_shoot.play()
         if (e.target.classList.contains("taken")) {
             e.target.classList.add("boom")
             infoDisplay.textContent = "You hit the computer's ship";
-            shot_hit.play();
             let classes = Array.from(e.target.classList)
             classes = classes.filter(className => className !== "block")
             classes = classes.filter(className => className !== "boom")
             classes = classes.filter(className => className !== "taken")
             playerHits.push(...classes)
             checkScore("player", playerHits, playerSunkShips)
+            setTimeout(()=>{
+                player_shot_hit.play();
+            },700)
         }
         if (!e.target.classList.contains("taken")) {
             infoDisplay.textContent = "You Missed";
-            shot_miss.play();
             e.target.classList.add("empty")
+            setTimeout(()=>{
+                player_shot_miss.play();
+            },700)
         }
         playerTurn = false;
         const allBoardBlocks = document.querySelectorAll("#computer div")
@@ -232,6 +241,7 @@ function computerGo(){
         infoDisplay.textContent = "The Computer Is Arming..."
         fire_shoot.play()
     }
+    if (gameOver)return;
 
     setTimeout(() => {
         let randomGo = Math.floor(Math.random() * width * width)
@@ -268,12 +278,11 @@ function computerGo(){
         infoDisplay.textContent = "Shoot!!!"
         const allBoardBlocks = document.querySelectorAll("#computer div")
         allBoardBlocks.forEach(block => block.addEventListener("click", handleClick))
-    }, 2000);
+    }, 5000);
 }
 
 const winnerDisplay = document.querySelector("#winnerDisplay");
 const gameOverContainer = document.querySelector(".gameOver-container");
-console.log(winnerDisplay)
 
 function checkScore(user, userHits, userSunkShips) {
 
@@ -305,15 +314,17 @@ function checkScore(user, userHits, userSunkShips) {
 
 
     if(playerSunkShips.length === 5) {
-
+        gameOver = true;
         let playerName = playerNameStorage[0];
         winnerDisplay.textContent = `Congradulations ${playerName} You sunk all the computers ships . You won!`
-        gameOverEl()
+        setTimeout(gameOverEl(),1000)
+        
     }
     if(computerSunkShips.length === 5){
+        gameOver = true;
         gameOverContainer.classList.add("fadeIn"); 
         winnerDisplay.textContent = "Computer sunk all you ships you, lost the game"
-        gameOverEl()
+        setTimeout(gameOverEl(),1000)
     }
 
 }
@@ -342,5 +353,3 @@ const resetBtns = document.querySelectorAll("#restart-button")
     resetBtns.forEach(resetBtn => resetBtn.addEventListener("click",()=>{
         window.location.reload();
     }))
-
-
