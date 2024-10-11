@@ -337,7 +337,18 @@ body {
     background-color: rgb(163, 145, 145);
 }
 
+#computer .carrier, #computer .battleship, #computer .cruiser, #computer .submarine,
+#computer .destroyer {
+    background-color: transparent;
+}
+
 .boom {
+    background-color: red;
+    border-radius: 100%;
+    transform: scale(.5);
+}
+
+#computer .boom {
     background-color: red;
     border-radius: 100%;
     transform: scale(.5);
