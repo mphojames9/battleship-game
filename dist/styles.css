@@ -49,7 +49,7 @@
 
 
 body {
-    background-image: url("/1012203.jpg");
+    background-image: url("../src/images/1012203.jpg");
     background-attachment: fixed;
     background-size: cover;
     background-position: center;
@@ -337,7 +337,18 @@ body {
     background-color: rgb(163, 145, 145);
 }
 
+#computer .carrier, #computer .battleship, #computer .cruiser, #computer .submarine,
+#computer .destroyer {
+    background-color: transparent;
+}
+
 .boom {
+    background-color: red;
+    border-radius: 100%;
+    transform: scale(.5);
+}
+
+#computer .boom {
     background-color: red;
     border-radius: 100%;
     transform: scale(.5);
@@ -353,7 +364,7 @@ body {
     width: 60px;
     height: 30px;
     margin: 3px; 
-    background-image: url("/ships/destroyer.svg");
+    background-image: url("../src/images/ships/destroyer.svg");
     background-color: transparent;
 } 
 
@@ -361,7 +372,7 @@ body {
     width: 90px;
     height: 60px;
     margin: 3px;
-    background-image: url("/ships/submarine.svg");
+    background-image: url("../src/images/ships/submarine.svg");
     background-color: transparent;
     margin-bottom: -7px;
 }
@@ -371,20 +382,20 @@ body {
     height: 30px;
     margin: 3px;
     background-color: transparent;
-    background-image: url("/ships/carrier.svg");
+    background-image: url("../src/images/ships/carrier.svg");
 } 
 .battleship-preview {
     width: 120px;
     height: 30px;
     margin: 3px;
     background-color: transparent;
-    background-image: url("/ships/battleship.svg");
+    background-image: url("../src/images/ships/battleship.svg");
 } 
 .carrier-preview {
     width: 150px;
     height: 30px;
     margin: 3px;
     background-color: transparent;
-    background-image: url("/ships/carrier.svg");
+    background-image: url("../src/images/ships/carrier.svg");
 
 } 
