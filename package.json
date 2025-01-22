@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "homepage": "http://mphojames9.github.io/battleship-game",
+  "repository": {
+    "type": "git",
+    "url": "git+https://mphojames9.github.io/battleship-game/"
+  },
   "dependencies": {
     "lodash": "^4.17.21"
   },
@@ -11,7 +16,10 @@
     "webpack-cli": "^5.1.4"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "author": "",
   "license": "ISC"
